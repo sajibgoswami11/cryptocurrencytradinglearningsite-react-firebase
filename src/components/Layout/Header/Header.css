@@ -1,0 +1,167 @@
+/* header styling state start  */
+
+.header {
+position: sticky;
+top: 0;
+display: flex;
+background-color: #f1eaea;
+justify-content: space-evenly;
+border-bottom: 0.1px solid lightgray;
+width: 100%;
+z-index: 500;
+padding: 5px;
+}
+
+nav {
+width: 85%;
+padding: 20px 0;
+margin: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.header a {
+    color: var(--black);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 120px;
+}
+
+.logo-text {
+    font-weight: 700;
+}
+
+.signing-links {
+    font-weight: 600;
+}
+
+.pages-links, .signing-links {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+button {
+color: var(--gray);
+background: var(--black);
+outline: none;
+border: none;
+line-height: 2.5;
+width: 80px;
+border-radius: 5px;
+}
+
+button:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+    cursor: pointer;
+    opacity: 1;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+    nav ul li a, .logo-text {
+        text-decoration: none;
+    }
+
+.hamburger {
+    display: none;
+}
+
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: var(--black) !important;
+    }
+/* header styling state END  */
+
+
+
+  
+/* media query at 900 px start */
+
+@media (max-width: 900px) {
+ 
+  nav {
+      width: 90%;
+  }
+}
+
+/* media query at 900 px end */
+
+
+/* media query at 625 px start */
+
+@media (max-width: 624px) {
+
+   /* header styling state start */
+   .header {
+    align-items: flex-start;
+   }
+
+    .header a, .header button {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        align-items: flex-start;
+        margin: 0 auto;
+    }
+
+    .navbar-links {
+      position: fixed;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      top: 68px;
+      padding-top: 50px;
+      right : -100%;
+      transition: 0.3s;
+  }
+
+      .navbar-links.active {
+          right: 0; justify-content:left;
+          background: var(--gray);
+      }
+
+  .pages-links, .signing-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      align-items: center;
+  }
+
+  .hamburger {
+      display: block;
+      cursor: pointer;
+  }
+        
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+      }
+
+      button {
+      width: 100px;
+      }
+      /* header styling state end*/
+
+
+}

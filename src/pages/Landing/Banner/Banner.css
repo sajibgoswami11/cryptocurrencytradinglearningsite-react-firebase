@@ -1,0 +1,8 @@
+h1{
+        font-family: var(--font_brand_font-family);
+        text-transform: none;
+        letter-spacing: unset;
+  
+        font-size: 40px;
+        line-height: 1.1;
+    }

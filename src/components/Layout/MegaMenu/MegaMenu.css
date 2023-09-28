@@ -1,0 +1,10 @@
+.megamenu{
+    margin-bottom: -7px;
+    margin-top: -19px;
+    position: sticky;
+    top: 67px;
+    transition: all .3s cubic-bezier(.165,.84,.44,1);
+    width: 100%;
+    z-index: 100
+
+}
