@@ -92,7 +92,7 @@ function MegaMenu() {
                     <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6">
                         <ul className="space-y-4 sm:mb-4 md:mb-0" aria-labelledby="mega-menu-full-cta-button">
                             <li>
-                          <Link to="#" className="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                          <Link to="/feed" className="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
                                     Online Stores
                                 </Link>
                             </li>

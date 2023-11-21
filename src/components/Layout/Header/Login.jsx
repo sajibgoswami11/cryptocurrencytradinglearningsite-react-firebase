@@ -4,6 +4,7 @@ import { auth } from "../../../firebase";
 import "./Login.css";
 import { login } from "../../../features/userSlice";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +12,7 @@ const Login = () => {
   const [profilePic, setProfilePic] = useState("");
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const register = () => {
     if (!name) {
       return alert("Please enter a full name");
@@ -32,7 +33,7 @@ const Login = () => {
                 displayName: name,
                 photoUrl: profilePic,
               })
-            );
+            ); navigate("/");
           });
       })
       .catch((error) => alert(error));
@@ -50,7 +51,7 @@ const Login = () => {
             displayName: userAuth.user.displayName,
             profileUrl: userAuth.user.photoURL,
           })
-        );
+        ); navigate("/"); 
       })
       .catch((error) => alert(error));
   };

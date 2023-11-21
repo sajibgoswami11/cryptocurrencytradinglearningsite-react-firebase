@@ -1,14 +1,14 @@
 import React, {  useState,useEffect } from "react";
 import '../Layout/Header/Header.css';
 import { useDispatch,useSelector } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link,  useNavigate } from 'react-router-dom'
 import MegaMenu from './MegaMenu/MegaMenu'
 import { auth } from "../../firebase";
 import { login,logout,selectUser } from "../../features/userSlice";
 import Landing from "../../pages/Landing/Landing";
 
 function Layout() {
- 
+      const navigate = useNavigate();
       const user = useSelector(selectUser);
         // eslint-disable-next-line;
       const dispatch = useDispatch();
@@ -31,7 +31,12 @@ function Layout() {
       });
       },
         []  );
-
+        
+        const logoutOfApp = () => {
+          dispatch(logout());
+          auth.signOut();
+          navigate("/");
+        };
       const [isMenuOpen, setIsMenuOpen] = useState(false);
   
       const handleHamburgerClick = () => {
@@ -62,7 +67,7 @@ function Layout() {
                                     </ul>
                                      )
                                 : (
-                                  <div className='loged_user_icon' > sajib</div>
+                                  <div className='loged_user_icon' onClick={logoutOfApp} > {user.displayName}</div>
                                 ) }
                           </div>
                           {/* <!-- navbar links state end --> */}
