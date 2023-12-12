@@ -5,7 +5,9 @@ import "./Login.css";
 import { login } from "../../../features/userSlice";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const Login = () => {
+
+
+const Login: React.FC<{children: React.ReactNode}> =() =>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -40,8 +42,8 @@ const Login = () => {
       .catch((error) => alert(error));
   };
 
-  const loginToApp = (e) => {
-   
+  const loginToApp = (e: React.MouseEvent<HTMLButtonElement>) =>
+   {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)

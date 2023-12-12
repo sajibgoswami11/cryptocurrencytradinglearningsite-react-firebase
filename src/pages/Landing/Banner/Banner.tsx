@@ -2,10 +2,11 @@ import './Banner.css'
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-
 const imageUrl = process.env.PUBLIC_URL + '/images/mixed-model-bg-desk.webp';
 
-const Banner = () => {
+
+
+const Banner: React.FC<{children: React.ReactNode}> = () => {
     return (
         <>
             <div  className="d-flex justify-content-between align-items-center mt-3">
