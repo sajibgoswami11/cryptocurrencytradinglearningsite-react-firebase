@@ -13,6 +13,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const register = () => {
     if (!name) {
       return alert("Please enter a full name");
@@ -40,6 +41,7 @@ const Login = () => {
   };
 
   const loginToApp = (e) => {
+   
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
@@ -54,6 +56,7 @@ const Login = () => {
         ); navigate("/"); 
       })
       .catch((error) => alert(error));
+      
   };
 
 

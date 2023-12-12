@@ -30,11 +30,11 @@ const PrivateRoute = ({ children }) => {
         return unsubscribe;
     }, [dispatch]);
 
-    return user ? (
-        children
-    ) : (
-        <Navigate to={'/login'} state={{ from: pathname }} replace />
-    );
+    if (user) {
+        return <>{children}</>;
+    } else {
+        return <Navigate to={'/login'} state={{ from: pathname }} replace />;
+    }
 };
 PrivateRoute.propTypes = {
     children: PropTypes.node.isRequired, // Add prop validation for children

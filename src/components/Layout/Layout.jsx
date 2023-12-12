@@ -10,8 +10,9 @@ import Landing from "../../pages/Landing/Landing";
 function Layout() {
       const navigate = useNavigate();
       const user = useSelector(selectUser);
-        // eslint-disable-next-line;
+      
       const dispatch = useDispatch();
+      
       useEffect(() => {
       auth.onAuthStateChanged((userAuth) => {
         if (userAuth) {
@@ -24,7 +25,9 @@ function Layout() {
               photoUrl: userAuth.photoURL,
             })
           );
-        } else {
+
+        }
+         else {
           //user is logged out
           dispatch(logout());
         }
@@ -32,11 +35,12 @@ function Layout() {
       },
         []  );
         
-        const logoutOfApp = () => {
-          dispatch(logout());
-          auth.signOut();
-          navigate("/");
-        };
+      const logoutOfApp = () => {
+        dispatch(logout());
+        auth.signOut();
+        navigate('/');window.location.href = '/';
+      };
+      
       const [isMenuOpen, setIsMenuOpen] = useState(false);
   
       const handleHamburgerClick = () => {
@@ -67,7 +71,7 @@ function Layout() {
                                     </ul>
                                      )
                                 : (
-                                  <div className='loged_user_icon' onClick={logoutOfApp} > {user.displayName}</div>
+                                  <Link to={'/'} className='loged_user_icon' onClick={logoutOfApp} > {user.email}</Link>
                                 ) }
                           </div>
                           {/* <!-- navbar links state end --> */}

@@ -47,35 +47,37 @@ function Feed() {
     }
     
     return (
-        <div className="feed">
-            <div className="feed_inputContainer">
-                 <div className="feed_input">
-                    <CreateIcon/>
-                    <form>
-                    <input value={input} onChange={e => setInput(e.target.value)} type="text"/>
-                        <button onClick={sendPost}  type="submit">Send</button>
-                    </form>
-                 </div>
-                  <div className="feed_inputOptions">
-                    <InputOption Icon= {ImageIcon} title='Photo' color="#7085F9"/>
-                    <InputOption Icon= {SubscriptionsIcon} title='Video' color="#7085F9"/>
-                    <InputOption Icon= {EventNoteIcon} title='Event' color="#7085F9"/>
-                    <InputOption Icon= {CalendarViewDayIcon} title='Write article' color="#7085F9"/>
-                 </div>
-            </div>
-            
-                {posts.map(({ id, data: { name, description, message, photoUrl}}) =>(
-                    <Post 
-                        key={id}
-                        name={name}
-                        description={description}
-                        message={message}
-                        photoUrl={photoUrl}
-                    />
-                ))}
-               
-           
-        </div>
+        <>
+                 <div className="feed">
+                    <div className="feed_inputContainer">
+                         <div className="feed_input">
+                            <CreateIcon/>
+                            <form>
+                            <input value={input} onChange={e => setInput(e.target.value)} type="text"/>
+                                <button onClick={sendPost}  type="submit">Send</button>
+                            </form>
+                         </div>
+                          <div className="feed_inputOptions">
+                            <InputOption Icon= {ImageIcon} title='Photo' color="#7085F9"/>
+                            <InputOption Icon= {SubscriptionsIcon} title='Video' color="#7085F9"/>
+                            <InputOption Icon= {EventNoteIcon} title='Event' color="#7085F9"/>
+                            <InputOption Icon= {CalendarViewDayIcon} title='Write article' color="#7085F9"/>
+                         </div>
+                    </div>
+                    
+                        {posts.map(({ id, data: { name, description, message, photoUrl}}) =>(
+                            <Post 
+                                key={id}
+                                name={name}
+                                description={description}
+                                message={message}
+                                photoUrl={photoUrl}
+                            />
+                        ))}
+                       
+                </div>
+        </>
+       
     )
 }
 
