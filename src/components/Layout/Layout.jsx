@@ -1,44 +1,43 @@
 import React, {  useState,useEffect } from "react";
 import '../Layout/Header/Header.css';
 import { useDispatch,useSelector } from "react-redux";
-import { Link,  useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import MegaMenu from './MegaMenu/MegaMenu'
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
+import {LoginService } from '../../services/LoginServiceContext'
+
 import { login,logout,selectUser } from "../../features/userSlice";
 import Landing from "../../pages/Landing/Landing";
 
 function Layout() {
-      const navigate = useNavigate();
+      // const navigate = useNavigate();
       const user = useSelector(selectUser);
-      
+      const loginService =new LoginService();
+
+      const getUserFromStorage = () => {
+        const userString = localStorage.getItem("username");
+        if (userString) {
+          return (userString);
+        }
+        return null;
+      };
       const dispatch = useDispatch();
       
       useEffect(() => {
-      auth.onAuthStateChanged((userAuth) => {
-        if (userAuth) {
-          //user is logged in
-          dispatch(
-            login({
-              email: userAuth.email,
-              uid: userAuth.uid,
-              displayName: userAuth.displayName,
-              photoUrl: userAuth.photoURL,
-            })
-          );
-
+        const user = getUserFromStorage();
+        if (user) {
+          dispatch(login(user)); // Dispatch login action with user data
         }
-         else {
-          //user is logged out
+        else{
           dispatch(logout());
         }
-      });
-      },
-        []  );
+      }, []);
         
       const logoutOfApp = () => {
         dispatch(logout());
-        auth.signOut();
-        navigate('/');window.location.href = '/';
+        // auth.signOut();
+        loginService.logout();
+        window.location.href = '/';
       };
       
       const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +70,7 @@ function Layout() {
                                     </ul>
                                      )
                                 : (
-                                  <Link to={'/'} className='loged_user_icon' onClick={logoutOfApp} > {user.email}</Link>
+                                  <Link to={'/'} className='loged_user_icon' onClick={logoutOfApp} > {user}</Link>
                                 ) }
                           </div>
                           {/* <!-- navbar links state end --> */}
