@@ -64,9 +64,8 @@ const Login: React.FC<{children: React.ReactNode}> =() =>{
           }
           catch(error)
           {
-            console.log(error.message); 
+            alert(error.message); 
           }
-
 
           // auth
           //   .signInWithEmailAndPassword(email, password)

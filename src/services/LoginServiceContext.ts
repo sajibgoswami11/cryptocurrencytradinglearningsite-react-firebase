@@ -32,8 +32,12 @@ import { Common } from './helper/common';
         return error;
       }
     };
+
+    public 
   
    
+
+    
     public logout =()=> {
         // remove user data from local storage for log out
         localStorage.removeItem('token');
